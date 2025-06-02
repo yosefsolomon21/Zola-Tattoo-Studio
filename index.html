@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zola Tattoo Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #f1f1f1;
+            overflow-x: hidden;
+        }
+        .logo-text {
+            font-family: 'Permanent Marker', cursive;
+        }
+        .tattoo-card {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+        }
+        .tattoo-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 30px 40px rgba(0,0,0,0.4);
+        }
+        .ink-splash {
+            position: absolute;
+            opacity: 0.05;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .ink-drip {
+            position: relative;
+        }
+        .ink-drip::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 40px;
+            background: linear-gradient(to bottom, #ff2d75, transparent);
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+            filter: blur(5px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .ink-drip:hover::after {
+            opacity: 0.7;
+            bottom: -15px;
+            height: 50px;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff2d75;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            z-index: 10;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Ink Splash Background Elements -->
+    <div class="ink-splash text-9xl text-pink-600 top-20 left-10">✒</div>
+    <div class="ink-splash text-8xl text-purple-600 top-1/3 right-20">✒</div>
+    <div class="ink-splash text-7xl text-blue-400 bottom-40 left-1/4">✒</div>
+    
+    <!-- Navigation -->
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center relative z-10">
+        <div class="flex items-center">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-600 to-purple-800 flex items-center justify-center mr-3 pulse">
+                <i class="fas fa-spa text-white text-2xl"></i>
+            </div>
+            <h1 class="logo-text text-3xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">Zola Tattoo Studio</h1>
+        </div>
+        <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link text-white hover:text-pink-400">Home</a>
+            <a href="#gallery" class="nav-link text-white hover:text-pink-400">Gallery</a>
+            
+            <a href="#about" class="nav-link text-white hover:text-pink-400">About</a>
+            <a href="#contact" class="nav-link text-white hover:text-pink-400">Contact</a>
+        </div>
+        <button class="md:hidden text-white">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">እንኳን ደህና መጡ</span>
+                    <br>Welcome
+                </h2>
+                <p class="text-gray-300 mb-8 text-lg max-w-lg">
+                    በዞላ ንቅሳት ስቱዲዮ፣ ንቅሳት ከቀለም በላይ ነው ብለን እናምናለን - ጥበብ፣ ማንነት እና ታሪክ ናቸው። ንጹህ፣ ፈጠራ ያለው እና እንግዳ ተቀባይ በሆነ ቦታ ውስጥ ራዕይዎን በትክክለኛ፣ በስሜታዊነት እና በጥንቃቄ ወደ ህይወት እንቀይራለን። At Zola Tattoo Studio, we believe tattoos are more than ink — they’re art, identity, and story. Located in a clean, creative, and welcoming space, our experienced artists are dedicated to bringing your vision to life with precision, passion, and care.
+                </p>
+                
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="relative w-full h-96 md:h-auto">
+                    <div class="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-800 rounded-3xl opacity-30 blur-xl"></div>
+                    <div class="absolute inset-0 bg-gray-900 rounded-3xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Tattoo artist at work" 
+                             class="w-full h-full object-cover opacity-90">
+                    </div>
+                    <div class="absolute -bottom-5 -right-5 w-32 h-32 bg-pink-600 rounded-full opacity-20 blur-xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-900 bg-opacity-70">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 ink-drip">Our Work/የእኛ ስራ</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Gallery Item 1 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                    <img src="work1.jpg" alt="Tattoo Art 1">
+                         
+                    
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                    <img src="work2.jpg" alt="Tattoo Art 1">
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                    <img src="work3.jpg" alt="Tattoo Art 1">
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                    <img src="work4.jpg" alt="Tattoo Art 1">
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                    <img src="work11.jpg" alt="Tattoo Art 1">
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                   <img src="work6.jpg" alt="Tattoo Art 1">
+                </div>
+                 <!-- Gallery Item 1 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                    <img src="work8.jpg" alt="Tattoo Art 1">
+                         
+                    
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                    <img src="work9.jpg" alt="Tattoo Art 1">
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="tattoo-card gallery-item rounded-2xl overflow-hidden bg-gray-800">
+                    <img src="work10.jpg" alt="Tattoo Art 1">
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+
+   
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-900 bg-opacity-70">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h2 class="text-4xl font-bold mb-6 ink-drip">Our Studio/የእኛ ስቱዲዮ</h2>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        Founded in 2010, Zola Tattoo Studio has grown from a small tattoo shop to one of the most respected studios in the country. We pride ourselves on maintaining the highest standards of hygiene, artistry, and customer service Our studio is designed to be a welcoming space where clients can feel comfortable during their tattoo journey. We use only premium equipment and the highest quality inks to ensure your tattoo heals beautifully and lasts a lifetime.
+                    </p>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        
+                        እ.ኤ.አ. በ 2010 የተመሰረተው ዞላ ንቅሳት ስቱዲዮ ከትንሽ ንቅሳት ሱቅ ወደ አገሪቱ በጣም የተከበሩ ስቱዲዮ አድጓል። ከፍተኛውን ፣ የአርቲስትነት እና የደንበኞች አገልግሎት በተመጣጣኝ ዋጋ ማግኝት ይችላሉ የእኛ ስቱዲዮ ደንበኞቻችን በሚነቀሱበት ወቅት ምቾት እዲሰማቸው ታስቦ የተዘጋጀ ነው። እንዲሁም ፕሪሚየም መሳሪያዎችን እና ከፍተኛ ጥራት ያላቸውን ቀለሞችን ብቻ እንጠቀማለን።
+                    </p>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-pink-600 bg-opacity-20 p-4 rounded-full">
+                            <i class="fas fa-certificate text-pink-400 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-300">
+                            Licensed and certified 
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-purple-600 bg-opacity-20 p-4 rounded-full">
+                            <i class="fas fa-award text-purple-400 text-2xl"></i>
+                        </div>
+                        <p class="text-gray-300">
+                            ሀገር አቀፍ እውቅና ያለው
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-pink-600 to-purple-800 rounded-3xl opacity-20 blur-xl"></div>
+                        <div class="relative bg-gray-800 rounded-3xl overflow-hidden">
+                             <img src="zola.jpg" alt="Tattoo Art 1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 ink-drip">Visit Us/ይጎብኙን</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                   For more informetion/ለበለጠ መረጃ
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row bg-gray-900 rounded-2xl overflow-hidden">
+                <div class="md:w-1/2 p-8 md:p-12">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information/መረጃ</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-pink-600 bg-opacity-20 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-pink-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Address/
+አድራሻችን</h4>
+                                <p class="text-gray-400">
+Bole Road, opposite of Getu Commercial Center. 2nd floor, next to New York and Kaldi's cafes., Addis Ababa, Ethiopia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-600 bg-opacity-20 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Hours/የስራ ሰዓታት</h4>
+                                <p class="text-gray-400">Monday - 
+Sunday: 24/7<br></p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 bg-opacity-20 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone/ስልክ</h4>
+                                <p class="text-gray-400"> +251912202621</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-green-600 bg-opacity-20 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-green-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-400">azmita2009@yahoo.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Follow Us/ይከተሉን</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-800 hover:bg-pink-600 w-12 h-12 rounded-full flex items-center justify-center transition-all">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-gray-800 hover:bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center transition-all">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-gray-800 hover:bg-blue-400 w-12 h-12 rounded-full flex items-center justify-center transition-all">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-gray-800 hover:bg-red-600 w-12 h-12 rounded-full flex items-center justify-center transition-all">
+                                <i class="fab fa-youtube text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <!-- Google Maps Embed -->
+                    <div class="h-full w-full">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d22383.40738310148!2d38.76139911606949!3d8.994446136315874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x164b85ade1673bb3%3A0x851f5d4d2d1e4ed5!2sAfrica%20Ave%2C%20Addis%20Ababa!3m2!1d9.0015011!2d38.7690572!5e1!3m2!1sen!2set!4v1748890501424!5m2!1sen!2set" 
+                            width="100%" 
+                            height="100%" 
+                            style="min-height: 400px; border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="opacity-90">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    
+                   
+                
+                
+            
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 Zola Tattoo Studio. All rights reserved. | <a href="#" class="hover:text-pink-400">Privacy Policy</a> | <a href="#" class="hover:text-pink-400">Terms of Service</a></p>
+                <p class="mt-2">Professional tattoo studio in Addis Ababa, Ethiopia.</p>
+            </div>
+        </div>
+    </footer>
+     <a href="https://yosefsolomon21.github.io/Yosefsolomon/" 
+     target="_blank" 
+     class="text-sm text-blue-600 hover:underline font-medium">
+    Developed by Yosef Solomon
+  </a>
+
+    <!-- Floating Booking Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button class="bg-gradient-to-r from-pink-600 to-purple-700 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:from-pink-700 hover:to-purple-800 transition-all transform hover:scale-110 animate-bounce">
+            <i class="fas fa-calendar-alt text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        // Simple animation for gallery items when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            galleryItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'all 0.6s ease';
+                observer.observe(item);
+            });
+            
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
